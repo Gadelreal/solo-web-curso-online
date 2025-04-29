@@ -1,0 +1,83 @@
+
+import React, { useEffect, useRef } from 'react';
+import videojs from 'video.js';
+import 'video.js/dist/video-js.css';
+
+interface VideoPlayerProps {
+  src: string;
+  type?: string;
+  poster?: string;
+  className?: string;
+  subtitles?: Array<{
+    src: string;
+    srclang: string;
+    label: string;
+    default?: boolean;
+  }>;
+}
+
+const VideoPlayer: React.FC<VideoPlayerProps> = ({ 
+  src, 
+  type = 'application/x-mpegURL', 
+  poster = '',
+  className = '', 
+  subtitles = []
+}) => {
+  const videoRef = useRef<HTMLDivElement>(null);
+  const playerRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+
+    const videoElement = document.createElement('video-js');
+    videoElement.classList.add('video-js');
+    videoElement.classList.add('vjs-big-play-centered');
+    videoElement.classList.add('vjs-16-9');
+    if (className) {
+      className.split(' ').forEach(cls => videoElement.classList.add(cls));
+    }
+    
+    videoRef.current.appendChild(videoElement);
+
+    const player = playerRef.current = videojs(videoElement, {
+      controls: true,
+      playbackRates: [0.75, 1, 1.25, 1.5, 2],
+      fluid: true,
+      poster: poster,
+      sources: [{
+        src: src,
+        type: type
+      }],
+      responsive: true,
+      preload: 'auto'
+    });
+
+    // Añadir subtítulos si existen
+    if (subtitles && subtitles.length > 0) {
+      subtitles.forEach(subtitle => {
+        player.addRemoteTextTrack({
+          kind: 'subtitles',
+          src: subtitle.src,
+          srclang: subtitle.srclang,
+          label: subtitle.label,
+          default: subtitle.default
+        }, false);
+      });
+    }
+
+    return () => {
+      if (player && !player.isDisposed()) {
+        player.dispose();
+        playerRef.current = null;
+      }
+    };
+  }, [src, type, poster, className, subtitles]);
+
+  return (
+    <div data-vjs-player>
+      <div ref={videoRef} />
+    </div>
+  );
+};
+
+export default VideoPlayer;

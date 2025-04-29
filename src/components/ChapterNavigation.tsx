@@ -2,8 +2,17 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-const ChapterNavigation: React.FC = () => {
+interface ChapterNavigationProps {
+  onComplete?: () => void;
+  isLastChapter?: boolean;
+}
+
+const ChapterNavigation: React.FC<ChapterNavigationProps> = ({ 
+  onComplete, 
+  isLastChapter = false 
+}) => {
   const location = useLocation();
   const path = location.pathname;
   
@@ -22,6 +31,12 @@ const ChapterNavigation: React.FC = () => {
   const prevLink = getPrevLink();
   const nextLink = getNextLink();
   
+  const handleComplete = () => {
+    if (onComplete) {
+      onComplete();
+    }
+  };
+  
   return (
     <div className="flex justify-between mt-12 pt-8 border-t border-gray-200">
       {prevLink ? (
@@ -36,15 +51,21 @@ const ChapterNavigation: React.FC = () => {
         <div></div>
       )}
       
-      {nextLink && (
+      {isLastChapter ? (
+        <Button onClick={handleComplete}>
+          Finalizar curso
+          <ChevronRight className="ml-2 h-5 w-5" />
+        </Button>
+      ) : nextLink ? (
         <Link 
           to={nextLink} 
           className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+          onClick={nextLink ? handleComplete : undefined}
         >
           {nextLink === '/capitulo-1' ? 'Capítulo 1' : 'Capítulo siguiente'}
           <ChevronRight className="ml-2 h-5 w-5" />
         </Link>
-      )}
+      ) : null}
     </div>
   );
 };

@@ -2,9 +2,15 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import ChapterNavigation from '../components/ChapterNavigation';
+import VideoPlayer from '../components/VideoPlayer';
 import { Card } from '@/components/ui/card';
 
 const Chapter1 = () => {
+  // Esta función activará el modal de feedback al final del capítulo
+  const triggerFeedback = () => {
+    document.dispatchEvent(new CustomEvent('ie-feedback-widget-openModal'));
+  };
+  
   return (
     <Layout>
       <div className="max-w-3xl mx-auto">
@@ -15,6 +21,20 @@ const Chapter1 = () => {
           <p className="text-gray-700 mb-4">
             [Aquí irá el contenido de la introducción]
           </p>
+        </Card>
+        
+        <Card className="mb-8 p-6">
+          <h2 className="text-2xl font-semibold mb-4">Contenido en Video</h2>
+          <div className="mb-4">
+            <VideoPlayer 
+              src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" 
+              poster="/video-poster.jpg"
+              subtitles={[
+                { src: "/subtitles/es.vtt", srclang: "es", label: "Español", default: true },
+                { src: "/subtitles/en.vtt", srclang: "en", label: "English" }
+              ]}
+            />
+          </div>
         </Card>
         
         <Card className="mb-8 p-6">
@@ -33,7 +53,7 @@ const Chapter1 = () => {
           </p>
         </Card>
         
-        <ChapterNavigation />
+        <ChapterNavigation onComplete={triggerFeedback} />
       </div>
     </Layout>
   );
