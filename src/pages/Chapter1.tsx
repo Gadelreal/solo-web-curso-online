@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import ChapterNavigation from '../components/ChapterNavigation';
@@ -7,15 +6,12 @@ import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Brain, BookOpen, Users, Video, Book } from "lucide-react";
 import { Link } from 'react-router-dom';
-
 const Chapter1 = () => {
   // Esta función activará el modal de feedback al final del capítulo
   const triggerFeedback = () => {
     document.dispatchEvent(new CustomEvent('ie-feedback-widget-openModal'));
   };
-  
-  return (
-    <Layout>
+  return <Layout>
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-6 text-blue-600">LESSON 1: Being Human</h1>
         
@@ -34,14 +30,16 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.1: What Does It Mean to be Human?</h3>
             <div className="mb-4">
-              <VideoPlayer 
-                src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" 
-                poster="/video-poster.jpg"
-                subtitles={[
-                  { src: "/subtitles/es.vtt", srclang: "es", label: "Español", default: true },
-                  { src: "/subtitles/en.vtt", srclang: "en", label: "English" }
-                ]}
-              />
+              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
+              src: "/subtitles/es.vtt",
+              srclang: "es",
+              label: "Español",
+              default: true
+            }, {
+              src: "/subtitles/en.vtt",
+              srclang: "en",
+              label: "English"
+            }]} />
             </div>
           </div>
           
@@ -66,14 +64,16 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.2: Being Human: The Interconnection of Body, Mind, and Soul</h3>
             <div className="mb-4">
-              <VideoPlayer 
-                src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" 
-                poster="/video-poster.jpg"
-                subtitles={[
-                  { src: "/subtitles/es.vtt", srclang: "es", label: "Español", default: true },
-                  { src: "/subtitles/en.vtt", srclang: "en", label: "English" }
-                ]}
-              />
+              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
+              src: "/subtitles/es.vtt",
+              srclang: "es",
+              label: "Español",
+              default: true
+            }, {
+              src: "/subtitles/en.vtt",
+              srclang: "en",
+              label: "English"
+            }]} />
             </div>
           </div>
           
@@ -97,14 +97,16 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.3: The Importance of Human Social Connection</h3>
             <div className="mb-4">
-              <VideoPlayer 
-                src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" 
-                poster="/video-poster.jpg"
-                subtitles={[
-                  { src: "/subtitles/es.vtt", srclang: "es", label: "Español", default: true },
-                  { src: "/subtitles/en.vtt", srclang: "en", label: "English" }
-                ]}
-              />
+              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
+              src: "/subtitles/es.vtt",
+              srclang: "es",
+              label: "Español",
+              default: true
+            }, {
+              src: "/subtitles/en.vtt",
+              srclang: "en",
+              label: "English"
+            }]} />
             </div>
           </div>
           
@@ -133,12 +135,7 @@ const Chapter1 = () => {
             <li>
               <strong>Why a strong social network improves performance, health, and well-being</strong>
               <div className="mt-1">
-                <a 
-                  href="https://www.ie.edu/center-for-health-and-well-being/blog/why-a-strong-social-network-improves-performance-health-and-well-being/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:text-blue-700 flex items-center"
-                >
+                <a href="https://www.ie.edu/center-for-health-and-well-being/blog/why-a-strong-social-network-improves-performance-health-and-well-being/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 flex items-center">
                   <span className="mr-1">Visit link</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -149,12 +146,7 @@ const Chapter1 = () => {
             <li>
               <strong>Your journey to self-discovery</strong>
               <div className="mt-1">
-                <a 
-                  href="https://www.ie.edu/center-for-health-and-well-being/blog/your-journey-to-self-discovery/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:text-blue-700 flex items-center"
-                >
+                <a href="https://www.ie.edu/center-for-health-and-well-being/blog/your-journey-to-self-discovery/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 flex items-center">
                   <span className="mr-1">Visit link</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -183,14 +175,16 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.4: Human Biases</h3>
             <div className="mb-4">
-              <VideoPlayer 
-                src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" 
-                poster="/video-poster.jpg"
-                subtitles={[
-                  { src: "/subtitles/es.vtt", srclang: "es", label: "Español", default: true },
-                  { src: "/subtitles/en.vtt", srclang: "en", label: "English" }
-                ]}
-              />
+              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
+              src: "/subtitles/es.vtt",
+              srclang: "es",
+              label: "Español",
+              default: true
+            }, {
+              src: "/subtitles/en.vtt",
+              srclang: "en",
+              label: "English"
+            }]} />
             </div>
           </div>
           
@@ -214,14 +208,16 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.5: Leading Self for Greater Impact in What We Do</h3>
             <div className="mb-4">
-              <VideoPlayer 
-                src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" 
-                poster="/video-poster.jpg"
-                subtitles={[
-                  { src: "/subtitles/es.vtt", srclang: "es", label: "Español", default: true },
-                  { src: "/subtitles/en.vtt", srclang: "en", label: "English" }
-                ]}
-              />
+              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
+              src: "/subtitles/es.vtt",
+              srclang: "es",
+              label: "Español",
+              default: true
+            }, {
+              src: "/subtitles/en.vtt",
+              srclang: "en",
+              label: "English"
+            }]} />
             </div>
           </div>
         </Card>
@@ -232,14 +228,16 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.6: Embracing the Fullness of Being Human</h3>
             <div className="mb-4">
-              <VideoPlayer 
-                src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" 
-                poster="/video-poster.jpg"
-                subtitles={[
-                  { src: "/subtitles/es.vtt", srclang: "es", label: "Español", default: true },
-                  { src: "/subtitles/en.vtt", srclang: "en", label: "English" }
-                ]}
-              />
+              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
+              src: "/subtitles/es.vtt",
+              srclang: "es",
+              label: "Español",
+              default: true
+            }, {
+              src: "/subtitles/en.vtt",
+              srclang: "en",
+              label: "English"
+            }]} />
             </div>
           </div>
         </Card>
@@ -256,12 +254,7 @@ const Chapter1 = () => {
             <li>
               <strong>Warmth and Competence Model</strong>
               <div className="mt-1">
-                <a 
-                  href="https://www.sciencedirect.com/science/article/abs/pii/S0065260107000020" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:text-blue-700 flex items-center"
-                >
+                <a href="https://www.sciencedirect.com/science/article/abs/pii/S0065260107000020" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 flex items-center">
                   <span className="mr-1">Visit link</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -272,12 +265,7 @@ const Chapter1 = () => {
             <li>
               <strong>Human Connection in the Age of AI</strong>
               <div className="mt-1">
-                <a 
-                  href="https://www.ie.edu/insights/articles/human-connection-in-the-age-of-ai/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-blue-500 hover:text-blue-700 flex items-center"
-                >
+                <a href="https://www.ie.edu/insights/articles/human-connection-in-the-age-of-ai/" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700 flex items-center">
                   <span className="mr-1">Visit link</span>
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -289,17 +277,11 @@ const Chapter1 = () => {
         </Card>
         
         <div className="mt-12 mb-8">
-          <img
-            src="/lovable-uploads/aa00bfb6-8b59-4c13-a099-ed3bc912aed7.png"
-            alt="Lesson 1: Being Human"
-            className="w-full rounded-lg shadow-md"
-          />
+          
         </div>
         
         <ChapterNavigation onComplete={triggerFeedback} />
       </div>
-    </Layout>
-  );
+    </Layout>;
 };
-
 export default Chapter1;
