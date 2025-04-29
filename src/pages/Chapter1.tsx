@@ -2,15 +2,34 @@ import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import ChapterNavigation from '../components/ChapterNavigation';
 import VideoPlayer from '../components/VideoPlayer';
+import ReflectionForm from '../components/ReflectionForm';
 import { Card } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Brain, BookOpen, Users, Video, Book } from "lucide-react";
 import { Link } from 'react-router-dom';
+
 const Chapter1 = () => {
   // Esta función activará el modal de feedback al final del capítulo
   const triggerFeedback = () => {
     document.dispatchEvent(new CustomEvent('ie-feedback-widget-openModal'));
   };
+  
+  // Define the reflection questions
+  const reflectionQuestions = [
+    {
+      id: 'social-network-impact',
+      text: 'How does your social network impact your performance, health, and well-being?'
+    },
+    {
+      id: 'technology-impact',
+      text: 'How does technology impact your social connections? Do you think technology can lead to distancing and loneliness, or does it enhance our relationships?'
+    },
+    {
+      id: 'self-discovery',
+      text: 'What methods mentioned in the article "Your Journey to Self-Discovery" resonate with you most as you embark on your path of self-discovery?'
+    }
+  ];
+  
   return <Layout>
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold mb-6 text-blue-600">LESSON 1: Being Human</h1>
@@ -159,14 +178,11 @@ const Chapter1 = () => {
         
         <Card className="mb-8 p-6">
           <h2 className="text-2xl font-semibold mb-4 text-yellow-500">Activity: Reflecting on Your Social Connections</h2>
-          <p className="text-gray-700 mb-4">
+          <p className="text-gray-700 mb-6">
             In light of what you've learned and read so far, please reflect on the following questions:
           </p>
-          <ul className="list-disc pl-6 space-y-2 text-gray-700">
-            <li>How does your social network impact your performance, health, and well-being?</li>
-            <li>How does technology impact your social connections? Do you think technology can lead to distancing and loneliness, or does it enhance our relationships?</li>
-            <li>What methods mentioned in the article "Your Journey to Self-Discovery" resonate with you most as you embark on your path of self-discovery?</li>
-          </ul>
+          
+          <ReflectionForm questions={reflectionQuestions} />
         </Card>
         
         <Card className="mb-8 p-6">
@@ -284,4 +300,5 @@ const Chapter1 = () => {
       </div>
     </Layout>;
 };
+
 export default Chapter1;
