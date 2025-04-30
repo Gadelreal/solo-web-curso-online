@@ -19,7 +19,7 @@ interface VideoPlayerProps {
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ 
   src, 
   type, 
-  poster = '/placeholder.svg',  // Use placeholder as default poster
+  poster = '/lovable-uploads/f61d8aad-7e54-4ad4-baf4-5d81ac0eb07b.png',  // Use the new gradient poster as default
   className = '', 
   subtitles = []
 }) => {

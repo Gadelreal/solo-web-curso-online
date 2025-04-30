@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import ChapterNavigation from '../components/ChapterNavigation';
@@ -53,7 +52,7 @@ const Chapter1 = () => {
               <VideoPlayer 
                 src="/Test video.mp4" 
                 type="video/mp4" 
-                poster="/lovable-uploads/1ef47cf1-58d7-4e3e-a44c-02f0343d194b.png" 
+                poster="/lovable-uploads/f61d8aad-7e54-4ad4-baf4-5d81ac0eb07b.png" 
                 subtitles={[{
                   src: "/subtitles/es.vtt",
                   srclang: "es",
@@ -92,7 +91,7 @@ const Chapter1 = () => {
               <VideoPlayer 
                 src="/Test video.mp4" 
                 type="video/mp4" 
-                poster="/video-poster.jpg" 
+                poster="/lovable-uploads/f61d8aad-7e54-4ad4-baf4-5d81ac0eb07b.png" 
                 subtitles={[{
                   src: "/subtitles/es.vtt",
                   srclang: "es",
@@ -130,7 +129,7 @@ const Chapter1 = () => {
               <VideoPlayer 
                 src="/Test video.mp4" 
                 type="video/mp4" 
-                poster="/video-poster.jpg" 
+                poster="/lovable-uploads/f61d8aad-7e54-4ad4-baf4-5d81ac0eb07b.png" 
                 subtitles={[{
                   src: "/subtitles/es.vtt",
                   srclang: "es",
@@ -210,7 +209,7 @@ const Chapter1 = () => {
               <VideoPlayer 
                 src="/Test video.mp4" 
                 type="video/mp4" 
-                poster="/video-poster.jpg" 
+                poster="/lovable-uploads/f61d8aad-7e54-4ad4-baf4-5d81ac0eb07b.png" 
                 subtitles={[{
                   src: "/subtitles/es.vtt",
                   srclang: "es",
@@ -248,7 +247,7 @@ const Chapter1 = () => {
               <VideoPlayer 
                 src="/Test video.mp4" 
                 type="video/mp4" 
-                poster="/video-poster.jpg" 
+                poster="/lovable-uploads/f61d8aad-7e54-4ad4-baf4-5d81ac0eb07b.png" 
                 subtitles={[{
                   src: "/subtitles/es.vtt",
                   srclang: "es",
@@ -273,7 +272,7 @@ const Chapter1 = () => {
               <VideoPlayer 
                 src="/Test video.mp4" 
                 type="video/mp4" 
-                poster="/video-poster.jpg" 
+                poster="/lovable-uploads/f61d8aad-7e54-4ad4-baf4-5d81ac0eb07b.png" 
                 subtitles={[{
                   src: "/subtitles/es.vtt",
                   srclang: "es",
