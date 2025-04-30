@@ -19,7 +19,7 @@ interface VideoPlayerProps {
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ 
   src, 
   type, 
-  poster = '',
+  poster = '/placeholder.svg',  // Use placeholder as default poster
   className = '', 
   subtitles = []
 }) => {
