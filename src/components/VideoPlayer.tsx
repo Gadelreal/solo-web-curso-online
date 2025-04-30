@@ -18,7 +18,7 @@ interface VideoPlayerProps {
 
 const VideoPlayer: React.FC<VideoPlayerProps> = ({ 
   src, 
-  type = 'application/x-mpegURL', 
+  type, 
   poster = '',
   className = '', 
   subtitles = []
@@ -39,6 +39,9 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     
     videoRef.current.appendChild(videoElement);
 
+    // Determine appropriate video type if not specified
+    const videoType = type || (src.endsWith('.mp4') ? 'video/mp4' : 'application/x-mpegURL');
+
     const player = playerRef.current = videojs(videoElement, {
       controls: true,
       playbackRates: [0.75, 1, 1.25, 1.5, 2],
@@ -46,13 +49,13 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
       poster: poster,
       sources: [{
         src: src,
-        type: type
+        type: videoType
       }],
       responsive: true,
       preload: 'auto'
     });
 
-    // Añadir subtítulos si existen
+    // Add subtitles if they exist
     if (subtitles && subtitles.length > 0) {
       subtitles.forEach(subtitle => {
         player.addRemoteTextTrack({

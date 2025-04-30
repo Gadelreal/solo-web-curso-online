@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
 import ChapterNavigation from '../components/ChapterNavigation';
@@ -49,16 +50,21 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.1: What Does It Mean to be Human?</h3>
             <div className="mb-4">
-              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
-              src: "/subtitles/es.vtt",
-              srclang: "es",
-              label: "Español",
-              default: true
-            }, {
-              src: "/subtitles/en.vtt",
-              srclang: "en",
-              label: "English"
-            }]} />
+              <VideoPlayer 
+                src="/Test video.mp4" 
+                type="video/mp4" 
+                poster="/video-poster.jpg" 
+                subtitles={[{
+                  src: "/subtitles/es.vtt",
+                  srclang: "es",
+                  label: "Español",
+                  default: true
+                }, {
+                  src: "/subtitles/en.vtt",
+                  srclang: "en",
+                  label: "English"
+                }]} 
+              />
             </div>
           </div>
           
@@ -83,16 +89,21 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.2: Being Human: The Interconnection of Body, Mind, and Soul</h3>
             <div className="mb-4">
-              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
-              src: "/subtitles/es.vtt",
-              srclang: "es",
-              label: "Español",
-              default: true
-            }, {
-              src: "/subtitles/en.vtt",
-              srclang: "en",
-              label: "English"
-            }]} />
+              <VideoPlayer 
+                src="/Test video.mp4" 
+                type="video/mp4" 
+                poster="/video-poster.jpg" 
+                subtitles={[{
+                  src: "/subtitles/es.vtt",
+                  srclang: "es",
+                  label: "Español",
+                  default: true
+                }, {
+                  src: "/subtitles/en.vtt",
+                  srclang: "en",
+                  label: "English"
+                }]} 
+              />
             </div>
           </div>
           
@@ -116,16 +127,21 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.3: The Importance of Human Social Connection</h3>
             <div className="mb-4">
-              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
-              src: "/subtitles/es.vtt",
-              srclang: "es",
-              label: "Español",
-              default: true
-            }, {
-              src: "/subtitles/en.vtt",
-              srclang: "en",
-              label: "English"
-            }]} />
+              <VideoPlayer 
+                src="/Test video.mp4" 
+                type="video/mp4" 
+                poster="/video-poster.jpg" 
+                subtitles={[{
+                  src: "/subtitles/es.vtt",
+                  srclang: "es",
+                  label: "Español",
+                  default: true
+                }, {
+                  src: "/subtitles/en.vtt",
+                  srclang: "en",
+                  label: "English"
+                }]} 
+              />
             </div>
           </div>
           
@@ -191,16 +207,21 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.4: Human Biases</h3>
             <div className="mb-4">
-              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
-              src: "/subtitles/es.vtt",
-              srclang: "es",
-              label: "Español",
-              default: true
-            }, {
-              src: "/subtitles/en.vtt",
-              srclang: "en",
-              label: "English"
-            }]} />
+              <VideoPlayer 
+                src="/Test video.mp4" 
+                type="video/mp4" 
+                poster="/video-poster.jpg" 
+                subtitles={[{
+                  src: "/subtitles/es.vtt",
+                  srclang: "es",
+                  label: "Español",
+                  default: true
+                }, {
+                  src: "/subtitles/en.vtt",
+                  srclang: "en",
+                  label: "English"
+                }]} 
+              />
             </div>
           </div>
           
@@ -224,16 +245,21 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.5: Leading Self for Greater Impact in What We Do</h3>
             <div className="mb-4">
-              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
-              src: "/subtitles/es.vtt",
-              srclang: "es",
-              label: "Español",
-              default: true
-            }, {
-              src: "/subtitles/en.vtt",
-              srclang: "en",
-              label: "English"
-            }]} />
+              <VideoPlayer 
+                src="/Test video.mp4" 
+                type="video/mp4" 
+                poster="/video-poster.jpg" 
+                subtitles={[{
+                  src: "/subtitles/es.vtt",
+                  srclang: "es",
+                  label: "Español",
+                  default: true
+                }, {
+                  src: "/subtitles/en.vtt",
+                  srclang: "en",
+                  label: "English"
+                }]} 
+              />
             </div>
           </div>
         </Card>
@@ -244,16 +270,21 @@ const Chapter1 = () => {
           <div className="mb-6">
             <h3 className="text-xl font-medium mb-3">Video 1.6: Embracing the Fullness of Being Human</h3>
             <div className="mb-4">
-              <VideoPlayer src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" poster="/video-poster.jpg" subtitles={[{
-              src: "/subtitles/es.vtt",
-              srclang: "es",
-              label: "Español",
-              default: true
-            }, {
-              src: "/subtitles/en.vtt",
-              srclang: "en",
-              label: "English"
-            }]} />
+              <VideoPlayer 
+                src="/Test video.mp4" 
+                type="video/mp4" 
+                poster="/video-poster.jpg" 
+                subtitles={[{
+                  src: "/subtitles/es.vtt",
+                  srclang: "es",
+                  label: "Español",
+                  default: true
+                }, {
+                  src: "/subtitles/en.vtt",
+                  srclang: "en",
+                  label: "English"
+                }]} 
+              />
             </div>
           </div>
         </Card>

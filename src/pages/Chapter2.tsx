@@ -27,7 +27,8 @@ const Chapter2 = () => {
           <h2 className="text-2xl font-semibold mb-4">Contenido en Video</h2>
           <div className="mb-4">
             <VideoPlayer 
-              src="https://iep-media.ie.edu/trailers/example-video/hls.m3u8" 
+              src="/Test video.mp4" 
+              type="video/mp4" 
               poster="/video-poster.jpg"
               subtitles={[
                 { src: "/subtitles/es.vtt", srclang: "es", label: "Español", default: true },
