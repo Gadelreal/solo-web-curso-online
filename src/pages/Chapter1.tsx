@@ -84,7 +84,7 @@ const Chapter1 = () => {
           keyPoint="As humans, we are programmed for survival. This instinct is still relevant in our lives today, 
             even if we do not often face life-threatening situations. As a result, our brains may interpret 
             certain events, such as an email or an exam, as a threat, even though these things are not 
-            life-threatening. Recognizing these kinds of "primitive" responses as part of our human identity 
+            life-threatening. Recognizing these kinds of 'primitive' responses as part of our human identity 
             is a crucial step toward self-awareness and, ultimately, flourishing."
           videoSrc="https://iep-media.ie.edu/trailers/example-video/hls.m3u8"
           videoPoster="/video-poster.jpg"
