@@ -40,7 +40,11 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
     videoRef.current.appendChild(videoElement);
 
     // Determine appropriate video type if not specified
-    const videoType = type || (src.endsWith('.mp4') ? 'video/mp4' : 'application/x-mpegURL');
+    const videoType = type || (
+      src.endsWith('.mp4') ? 'video/mp4' : 
+      src.endsWith('.m3u8') ? 'application/x-mpegURL' :
+      'video/mp4' // Default to mp4 if type can't be determined
+    );
 
     const player = playerRef.current = videojs(videoElement, {
       controls: true,
@@ -67,6 +71,12 @@ const VideoPlayer: React.FC<VideoPlayerProps> = ({
         }, false);
       });
     }
+
+    // Log when a video error occurs
+    player.on('error', function() {
+      const error = player.error();
+      console.error('Video player error:', error);
+    });
 
     return () => {
       if (player && !player.isDisposed()) {
