@@ -17,7 +17,7 @@ const Index = () => {
   }, []);
   
   return (
-    <div className="relative h-screen w-screen overflow-hidden flex items-center justify-center bg-white">
+    <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white bg-hero-pattern">
       {/* Header minimalista */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 py-4">
         <div className="flex justify-between items-center max-w-7xl mx-auto">
@@ -47,51 +47,36 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Contenido dividido en dos columnas */}
-      <div className={`w-full h-full flex flex-col md:flex-row transition-opacity duration-700 ${
+      {/* Contenido alineado a la izquierda para no superponer a la persona en la imagen */}
+      <div className={`w-full max-w-7xl mx-auto pl-6 md:pl-16 lg:pl-24 transition-opacity duration-700 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}>
-        {/* Columna izquierda - Contenido */}
-        <div className="w-full md:w-1/2 h-full flex items-center justify-center p-8 md:p-16">
-          <div className="max-w-xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">
-              Descubre las nuevas tendencias educativas
-            </h1>
-            
-            <p className="text-lg md:text-xl mb-8 text-gray-700 leading-relaxed">
-              Creemos que la educación y el desarrollo profesional funcionan mejor cuando están respaldados por la innovación y la excelencia académica.
-            </p>
-            
-            <Button 
-              asChild 
-              className="bg-coral-red hover:bg-coral-red/90 text-white rounded-md px-8 py-3 text-base font-medium transition-all duration-200"
-            >
-              <Link to="/capitulo-1" className="flex items-center gap-2">
-                Comenzar curso <ChevronRight className="h-5 w-5" />
-              </Link>
-            </Button>
+        <div className="w-full md:w-1/2 lg:w-5/12">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">
+            Descubre las nuevas tendencias educativas
+          </h1>
+          
+          <p className="text-lg md:text-xl mb-8 text-gray-700 leading-relaxed">
+            Creemos que la educación y el desarrollo profesional funcionan mejor cuando están respaldados por la innovación y la excelencia académica.
+          </p>
+          
+          <Button 
+            asChild 
+            className="bg-coral-red hover:bg-coral-red/90 text-white rounded-md px-8 py-3 text-base font-medium transition-all duration-200"
+          >
+            <Link to="/capitulo-1" className="flex items-center gap-2">
+              Comenzar curso <ChevronRight className="h-5 w-5" />
+            </Link>
+          </Button>
 
-            <div className="mt-14">
-              <p className="text-sm text-gray-500 mb-4">Reconocido por más de 10 instituciones internacionales</p>
-              <div className="flex items-center space-x-6 opacity-80">
-                <span className="text-lg font-serif italic text-gray-700">Financial Times</span>
-                <span className="text-lg font-bold text-gray-700">Bloomberg</span>
-                <span className="text-lg font-sans text-gray-700">Forbes</span>
-              </div>
+          <div className="mt-14">
+            <p className="text-sm text-gray-500 mb-4">Reconocido por más de 10 instituciones internacionales</p>
+            <div className="flex items-center space-x-6 opacity-80">
+              <span className="text-lg font-serif italic text-gray-700">Financial Times</span>
+              <span className="text-lg font-bold text-gray-700">Bloomberg</span>
+              <span className="text-lg font-sans text-gray-700">Forbes</span>
             </div>
           </div>
-        </div>
-
-        {/* Columna derecha - Imagen */}
-        <div className="hidden md:block w-1/2 h-full relative overflow-hidden bg-gray-100">
-          <img 
-            src="public/lovable-uploads/552b1e43-f178-4d9d-a7ab-c3f5eb683c2c.png" 
-            alt="Estudiante IE" 
-            className="object-cover h-full w-full"
-            onError={(e) => {
-              e.currentTarget.src = '/placeholder.svg';
-            }} 
-          />
         </div>
       </div>
 
