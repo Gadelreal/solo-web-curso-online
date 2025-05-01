@@ -63,9 +63,10 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Nuevos colores para el gradiente
+				// Nuevos colores para el diseño
 				'soft-orange': '#FEC6A1',
 				'bright-orange': '#F97316',
+				'coral-red': '#FF6B6B',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
