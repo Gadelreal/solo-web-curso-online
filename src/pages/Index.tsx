@@ -17,7 +17,10 @@ const Index = () => {
   }, []);
   
   return (
-    <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white bg-hero-pattern">
+    <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white">
+      {/* Background div with the hero image */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-hero-pattern"></div>
+      
       {/* Header minimalista */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 py-4">
         <div className="flex justify-between items-center max-w-7xl mx-auto">
