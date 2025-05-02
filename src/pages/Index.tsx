@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Search } from 'lucide-react';
+import ParticleBackground from '@/components/ParticleBackground';
 
 const Index = () => {
   const currentYear = new Date().getFullYear();
@@ -18,13 +19,10 @@ const Index = () => {
   
   return (
     <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white">
-      {/* Fondo de imagen asegurándonos que carga correctamente */}
-      <div 
-        className="absolute top-0 right-0 w-1/2 h-full hero-background" 
-        style={{
-          backgroundImage: "url('/lovable-uploads/45fc87be-a022-4df4-8d80-2bf40922896c.png')"
-        }}
-      ></div>
+      {/* Particles background */}
+      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-br from-[#f8f8ff]/80 to-[#f1f1ff]/90 overflow-hidden">
+        <ParticleBackground />
+      </div>
       
       {/* Header con logo de IE Universidad */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 py-4">

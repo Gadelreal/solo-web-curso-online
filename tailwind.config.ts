@@ -19,9 +19,6 @@ export default {
 			}
 		},
 		extend: {
-			backgroundImage: {
-				'hero-pattern': "url('/lovable-uploads/45fc87be-a022-4df4-8d80-2bf40922896c.png')",
-			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -70,6 +67,12 @@ export default {
 				'soft-orange': '#FEC6A1',
 				'bright-orange': '#F97316',
 				'coral-red': '#FF6B6B',
+				// Colores específicos para partículas
+				'particle-light': '#F1F0FB',
+				'particle-purple': '#D6BCFA',
+				'particle-accent': '#9b87f5',
+				'particle-dark': '#7E69AB',
+				'particle-neutral': '#8E9196',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -100,13 +103,18 @@ export default {
 				'scale-in': {
 					'0%': { transform: 'scale(0.95)', opacity: '0' },
 					'100%': { transform: 'scale(1)', opacity: '1' }
+				},
+				'float': {
+					'0%, 100%': { transform: 'translateY(0)' },
+					'50%': { transform: 'translateY(-10px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
-				'scale-in': 'scale-in 0.2s ease-out'
+				'scale-in': 'scale-in 0.2s ease-out',
+				'float': 'float 3s ease-in-out infinite'
 			}
 		}
 	},
