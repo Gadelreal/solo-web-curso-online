@@ -18,8 +18,16 @@ const Index = () => {
   
   return (
     <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white">
-      {/* Background div with the hero image */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-hero-pattern"></div>
+      {/* Background div with the hero image - usando estilo inline para asegurar que cargue */}
+      <div 
+        className="absolute top-0 right-0 w-1/2 h-full" 
+        style={{
+          backgroundImage: "url('/lovable-uploads/4777c7f2-480e-4f0e-a2c5-1f144c61d617.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "right center",
+          backgroundRepeat: "no-repeat"
+        }}
+      ></div>
       
       {/* Header minimalista */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 py-4">
