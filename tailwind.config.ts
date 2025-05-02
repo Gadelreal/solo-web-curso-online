@@ -20,7 +20,7 @@ export default {
 		},
 		extend: {
 			backgroundImage: {
-				'hero-pattern': "url('/lovable-uploads/4777c7f2-480e-4f0e-a2c5-1f144c61d617.png')",
+				'hero-pattern': "url('/lovable-uploads/45fc87be-a022-4df4-8d80-2bf40922896c.png')",
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -66,7 +66,7 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Nuevos colores para el diseño
+				// Colores para el diseño
 				'soft-orange': '#FEC6A1',
 				'bright-orange': '#F97316',
 				'coral-red': '#FF6B6B',

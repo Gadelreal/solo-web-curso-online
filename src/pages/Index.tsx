@@ -18,18 +18,15 @@ const Index = () => {
   
   return (
     <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white">
-      {/* Background div with the hero image - usando estilo inline para asegurar que cargue */}
+      {/* Fondo de imagen asegurándonos que carga correctamente */}
       <div 
-        className="absolute top-0 right-0 w-1/2 h-full" 
+        className="absolute top-0 right-0 w-1/2 h-full hero-background" 
         style={{
-          backgroundImage: "url('/lovable-uploads/4777c7f2-480e-4f0e-a2c5-1f144c61d617.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "right center",
-          backgroundRepeat: "no-repeat"
+          backgroundImage: "url('/lovable-uploads/45fc87be-a022-4df4-8d80-2bf40922896c.png')"
         }}
       ></div>
       
-      {/* Header minimalista */}
+      {/* Header con logo de IE Universidad */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 py-4">
         <div className="flex justify-between items-center max-w-7xl mx-auto">
           <a 
@@ -58,7 +55,7 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Contenido alineado a la izquierda para no superponer a la persona en la imagen */}
+      {/* Contenido principal alineado a la izquierda */}
       <div className={`w-full max-w-7xl mx-auto pl-6 md:pl-16 lg:pl-24 transition-opacity duration-700 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}>
@@ -70,6 +67,15 @@ const Index = () => {
           <p className="text-lg md:text-xl mb-8 text-gray-700 leading-relaxed">
             Creemos que la educación y el desarrollo profesional funcionan mejor cuando están respaldados por la innovación y la excelencia académica.
           </p>
+          
+          {/* Información del autor */}
+          <div className="mb-8 p-4 border-l-4 border-coral-red bg-gray-50 rounded-r-md">
+            <h3 className="text-xl font-semibold mb-2">Autor</h3>
+            <p className="text-gray-700">Dra. María Rodríguez</p>
+            <p className="text-sm text-gray-500">Profesora de Innovación Educativa</p>
+            <p className="text-sm text-gray-500">Facultad de Ciencias Sociales y Comunicación</p>
+            <p className="text-sm text-gray-500 mt-2">Duración del curso: 8 semanas</p>
+          </div>
           
           <Button 
             asChild 
@@ -91,11 +97,14 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Copyright minimalista */}
+      {/* Copyright y feedback survey widget (según requerimientos) */}
       <div className="absolute bottom-4 left-0 w-full text-center z-10">
         <p className="text-xs text-gray-500">
           © {currentYear} IE University. Todos los derechos reservados.
         </p>
+        {/* Comentario HTML para el widget de encuesta de retroalimentación */}
+        {/* SurveyAppProperties {"position":"right", "variant":"LateralAndPopUp"} SurveyAppProperties */}
+        {/* InjectionCode SurveyApp */}
       </div>
     </div>
   );
