@@ -41,14 +41,14 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Contenido principal con fondo semitransparente para mejorar legibilidad */}
+      {/* Contenido principal - removing background, rounded corners and shadow */}
       <div className={`w-full max-w-7xl mx-auto px-6 md:pl-16 lg:pl-24 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="w-full md:w-1/2 lg:w-5/12 rounded-lg backdrop-blur-md bg-white/70 p-6 shadow-lg">
+        <div className="w-full md:w-1/2 lg:w-5/12 p-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Descubre las nuevas 
 tendencias educativas</h1>
           
           {/* Información del autor */}
-          <div className="mb-8 p-4 border-l-4 border-coral-red bg-white/90 rounded-r-md">
+          <div className="mb-8 p-4 border-l-4 border-coral-red">
             <h3 className="text-xl font-semibold mb-2">Autor</h3>
             <p className="text-gray-700">Dra. María Rodríguez</p>
             <p className="text-sm text-gray-500">Profesora de Innovación Educativa</p>
