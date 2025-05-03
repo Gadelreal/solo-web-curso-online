@@ -1,21 +1,17 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Search } from 'lucide-react';
 import ParticleBackground from '@/components/ParticleBackground';
-
 const Index = () => {
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
-  
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
     return () => clearTimeout(timer);
   }, []);
-  
   return <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white">
       {/* Particles background fills the entire screen */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -43,11 +39,10 @@ const Index = () => {
       </header>
 
       {/* Contenido principal - positioned in front of animation with 2/3 width */}
-      <div className="w-full z-10 px-6">
+      <div className="w-full z-10 px-[120px]">
         <div className={`w-full max-w-7xl mx-auto transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="w-2/3 p-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Descubre las nuevas 
-tendencias educativas</h1>
+          <div className="w-2/3 p-12">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Human Flourishing</h1>
             
             {/* Información del autor */}
             <div className="mb-8 p-4 border-l-4 border-coral-red">
@@ -86,5 +81,4 @@ tendencias educativas</h1>
       </div>
     </div>;
 };
-
 export default Index;
