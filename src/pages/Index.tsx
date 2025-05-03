@@ -3,15 +3,18 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Search } from 'lucide-react';
 import ParticleBackground from '@/components/ParticleBackground';
+
 const Index = () => {
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
+  
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
     return () => clearTimeout(timer);
   }, []);
+  
   return <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white">
       {/* Particles background fills the entire screen */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -38,13 +41,11 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Contenido principal alineado a la izquierda con fondo semitransparente para mejorar legibilidad */}
-      <div className={`w-full max-w-7xl mx-auto pl-6 md:pl-16 lg:pl-24 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="w-full md:w-1/2 lg:w-5/12 p-6 shadow-sm backdrop-blur-sm bg-transparent rounded-none py-0 px-0 mx-0 my-0">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight mx-0">Descubre las nuevas 
+      {/* Contenido principal con fondo semitransparente para mejorar legibilidad */}
+      <div className={`w-full max-w-7xl mx-auto px-6 md:pl-16 lg:pl-24 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="w-full md:w-1/2 lg:w-5/12 rounded-lg backdrop-blur-md bg-white/70 p-6 shadow-lg">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Descubre las nuevas 
 tendencias educativas</h1>
-          
-          
           
           {/* Información del autor */}
           <div className="mb-8 p-4 border-l-4 border-coral-red bg-white/90 rounded-r-md">
@@ -62,7 +63,6 @@ tendencias educativas</h1>
           </Button>
 
           <div className="mt-14">
-            
             <div className="flex items-center space-x-6 opacity-80">
               
               
@@ -74,7 +74,7 @@ tendencias educativas</h1>
 
       {/* Copyright y feedback survey widget (según requerimientos) */}
       <div className="absolute bottom-4 left-0 w-full text-center z-10">
-        <p className="text-xs text-gray-500">
+        <p className="text-xs text-gray-500 bg-white/50 py-1 inline-block px-4 rounded">
           © {currentYear} IE University. Todos los derechos reservados.
         </p>
         {/* Comentario HTML para el widget de encuesta de retroalimentación */}
@@ -83,4 +83,5 @@ tendencias educativas</h1>
       </div>
     </div>;
 };
+
 export default Index;

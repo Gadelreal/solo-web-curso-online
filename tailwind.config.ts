@@ -67,12 +67,13 @@ export default {
 				'soft-orange': '#FEC6A1',
 				'bright-orange': '#F97316',
 				'coral-red': '#FF6B6B',
-				// Colores específicos para partículas (actualizados a tonos blancos)
-				'particle-light': '#FFFFFF',
-				'particle-medium': '#F5F5F5',
-				'particle-accent': '#EEEEEE',
-				'particle-dark': '#E0E0E0',
-				'particle-neutral': '#D0D0D0',
+				// Añadimos colores pastel para las partículas
+				'pastel-pink': '#FFD1DC',
+				'pastel-blue': '#D3E4FD',
+				'pastel-green': '#F2FCE2',
+				'pastel-purple': '#E5DEFF',
+				'pastel-yellow': '#FEF7CD',
+				'pastel-peach': '#FDE1D3',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
