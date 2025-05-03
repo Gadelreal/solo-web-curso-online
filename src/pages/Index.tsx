@@ -19,8 +19,8 @@ const Index = () => {
   
   return (
     <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white">
-      {/* Particles background */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-br from-[#f8f8ff]/80 to-[#f1f1ff]/90 overflow-hidden">
+      {/* Particles background fills the entire screen */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <ParticleBackground />
       </div>
       
@@ -53,11 +53,11 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Contenido principal alineado a la izquierda */}
+      {/* Contenido principal alineado a la izquierda con fondo semitransparente para mejorar legibilidad */}
       <div className={`w-full max-w-7xl mx-auto pl-6 md:pl-16 lg:pl-24 transition-opacity duration-700 ${
         isVisible ? 'opacity-100' : 'opacity-0'
       }`}>
-        <div className="w-full md:w-1/2 lg:w-5/12">
+        <div className="w-full md:w-1/2 lg:w-5/12 p-6 bg-white/80 rounded-lg shadow-sm backdrop-blur-sm">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">
             Descubre las nuevas tendencias educativas
           </h1>
@@ -67,7 +67,7 @@ const Index = () => {
           </p>
           
           {/* Información del autor */}
-          <div className="mb-8 p-4 border-l-4 border-coral-red bg-gray-50 rounded-r-md">
+          <div className="mb-8 p-4 border-l-4 border-coral-red bg-white/90 rounded-r-md">
             <h3 className="text-xl font-semibold mb-2">Autor</h3>
             <p className="text-gray-700">Dra. María Rodríguez</p>
             <p className="text-sm text-gray-500">Profesora de Innovación Educativa</p>

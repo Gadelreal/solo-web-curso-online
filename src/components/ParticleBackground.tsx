@@ -27,9 +27,9 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Particle settings
+    // Particle settings - using white/gray shades for particles
     const particleCount = 70;
-    const particleColors = ['#F1F0FB', '#D6BCFA', '#9b87f5', '#7E69AB', '#8E9196'];
+    const particleColors = ['#f8f8f8', '#f0f0f0', '#e8e8e8', '#dddddd', '#cccccc'];
     const minSize = 2;
     const maxSize = 5;
     const minSpeed = 0.2;
