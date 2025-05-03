@@ -1,24 +1,18 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronRight, Search } from 'lucide-react';
 import ParticleBackground from '@/components/ParticleBackground';
-
 const Index = () => {
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
-    
     return () => clearTimeout(timer);
   }, []);
-  
-  return (
-    <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white">
+  return <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white">
       {/* Particles background fills the entire screen */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <ParticleBackground />
@@ -27,19 +21,10 @@ const Index = () => {
       {/* Header con logo de IE Universidad */}
       <header className="absolute top-0 left-0 right-0 z-20 px-6 py-4">
         <div className="flex justify-between items-center max-w-7xl mx-auto">
-          <a 
-            href="https://www.ie.edu" 
-            target="_blank" 
-            rel="noopener noreferrer"
-          >
-            <img 
-              src="/ie-logo-blue.svg" 
-              alt="IE University" 
-              className="h-8 w-auto" 
-              onError={(e) => {
-                e.currentTarget.src = '/ie-logo-fallback.png';
-              }} 
-            />
+          <a href="https://www.ie.edu" target="_blank" rel="noopener noreferrer">
+            <img src="/ie-logo-blue.svg" alt="IE University" className="h-8 w-auto" onError={e => {
+            e.currentTarget.src = '/ie-logo-fallback.png';
+          }} />
           </a>
           <nav className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-gray-800 hover:text-gray-600 transition-colors text-sm font-medium">Inicio</Link>
@@ -54,17 +39,12 @@ const Index = () => {
       </header>
 
       {/* Contenido principal alineado a la izquierda con fondo semitransparente para mejorar legibilidad */}
-      <div className={`w-full max-w-7xl mx-auto pl-6 md:pl-16 lg:pl-24 transition-opacity duration-700 ${
-        isVisible ? 'opacity-100' : 'opacity-0'
-      }`}>
-        <div className="w-full md:w-1/2 lg:w-5/12 p-6 bg-white/80 rounded-lg shadow-sm backdrop-blur-sm">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">
-            Descubre las nuevas tendencias educativas
-          </h1>
+      <div className={`w-full max-w-7xl mx-auto pl-6 md:pl-16 lg:pl-24 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className="w-full md:w-1/2 lg:w-5/12 p-6 shadow-sm backdrop-blur-sm bg-transparent rounded-none py-0 px-0 mx-0 my-0">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight mx-0">Descubre las nuevas 
+tendencias educativas</h1>
           
-          <p className="text-lg md:text-xl mb-8 text-gray-700 leading-relaxed">
-            Creemos que la educación y el desarrollo profesional funcionan mejor cuando están respaldados por la innovación y la excelencia académica.
-          </p>
+          
           
           {/* Información del autor */}
           <div className="mb-8 p-4 border-l-4 border-coral-red bg-white/90 rounded-r-md">
@@ -75,21 +55,18 @@ const Index = () => {
             <p className="text-sm text-gray-500 mt-2">Duración del curso: 8 semanas</p>
           </div>
           
-          <Button 
-            asChild 
-            className="bg-coral-red hover:bg-coral-red/90 text-white rounded-md px-8 py-3 text-base font-medium transition-all duration-200"
-          >
+          <Button asChild className="bg-coral-red hover:bg-coral-red/90 text-white rounded-md px-8 py-3 text-base font-medium transition-all duration-200">
             <Link to="/capitulo-1" className="flex items-center gap-2">
               Comenzar curso <ChevronRight className="h-5 w-5" />
             </Link>
           </Button>
 
           <div className="mt-14">
-            <p className="text-sm text-gray-500 mb-4">Reconocido por más de 10 instituciones internacionales</p>
+            
             <div className="flex items-center space-x-6 opacity-80">
-              <span className="text-lg font-serif italic text-gray-700">Financial Times</span>
-              <span className="text-lg font-bold text-gray-700">Bloomberg</span>
-              <span className="text-lg font-sans text-gray-700">Forbes</span>
+              
+              
+              
             </div>
           </div>
         </div>
@@ -104,8 +81,6 @@ const Index = () => {
         {/* SurveyAppProperties {"position":"right", "variant":"LateralAndPopUp"} SurveyAppProperties */}
         {/* InjectionCode SurveyApp */}
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
