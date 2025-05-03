@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -41,32 +42,34 @@ const Index = () => {
         </div>
       </header>
 
-      {/* Contenido principal - removing background, rounded corners and shadow */}
-      <div className={`w-full max-w-7xl mx-auto px-6 md:pl-16 lg:pl-24 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="w-full md:w-1/2 lg:w-5/12 p-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Descubre las nuevas 
+      {/* Contenido principal - positioned in front of animation with 2/3 width */}
+      <div className="w-full z-10 px-6">
+        <div className={`w-full max-w-7xl mx-auto transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className="w-2/3 p-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Descubre las nuevas 
 tendencias educativas</h1>
-          
-          {/* Información del autor */}
-          <div className="mb-8 p-4 border-l-4 border-coral-red">
-            <h3 className="text-xl font-semibold mb-2">Autor</h3>
-            <p className="text-gray-700">Dra. María Rodríguez</p>
-            <p className="text-sm text-gray-500">Profesora de Innovación Educativa</p>
-            <p className="text-sm text-gray-500">Facultad de Ciencias Sociales y Comunicación</p>
-            <p className="text-sm text-gray-500 mt-2">Duración del curso: 8 semanas</p>
-          </div>
-          
-          <Button asChild className="bg-coral-red hover:bg-coral-red/90 text-white rounded-md px-8 py-3 text-base font-medium transition-all duration-200">
-            <Link to="/capitulo-1" className="flex items-center gap-2">
-              Comenzar curso <ChevronRight className="h-5 w-5" />
-            </Link>
-          </Button>
+            
+            {/* Información del autor */}
+            <div className="mb-8 p-4 border-l-4 border-coral-red">
+              <h3 className="text-xl font-semibold mb-2">Autor</h3>
+              <p className="text-gray-700">Dra. María Rodríguez</p>
+              <p className="text-sm text-gray-500">Profesora de Innovación Educativa</p>
+              <p className="text-sm text-gray-500">Facultad de Ciencias Sociales y Comunicación</p>
+              <p className="text-sm text-gray-500 mt-2">Duración del curso: 8 semanas</p>
+            </div>
+            
+            <Button asChild className="bg-coral-red hover:bg-coral-red/90 text-white rounded-md px-8 py-3 text-base font-medium transition-all duration-200">
+              <Link to="/capitulo-1" className="flex items-center gap-2">
+                Comenzar curso <ChevronRight className="h-5 w-5" />
+              </Link>
+            </Button>
 
-          <div className="mt-14">
-            <div className="flex items-center space-x-6 opacity-80">
-              
-              
-              
+            <div className="mt-14">
+              <div className="flex items-center space-x-6 opacity-80">
+                
+                
+                
+              </div>
             </div>
           </div>
         </div>
