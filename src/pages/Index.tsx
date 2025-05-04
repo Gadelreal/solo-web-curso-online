@@ -1,17 +1,21 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 import ParticleBackground from '@/components/ParticleBackground';
+
 const Index = () => {
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
     return () => clearTimeout(timer);
   }, []);
+
   return <div className="relative h-screen w-screen overflow-hidden flex flex-col lg:flex-row">
       {/* Left side with particle background and content */}
       <div className="relative w-full lg:w-1/2 h-full flex items-center">
@@ -61,10 +65,15 @@ const Index = () => {
         </div>
       </div>
       
-      {/* Right side with image */}
+      {/* Right side with the uploaded image */}
       <div className="w-full lg:w-1/2 h-full">
-        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Educational landscape" className="w-full h-full object-cover" />
+        <img 
+          src="/lovable-uploads/7e6cb268-92ec-43c6-a62b-fd6e4f7bf969.png" 
+          alt="Person with sunglasses in bright sunlight" 
+          className="w-full h-full object-cover" 
+        />
       </div>
     </div>;
 };
+
 export default Index;
