@@ -1,84 +1,81 @@
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import { ChevronRight, Search } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import ParticleBackground from '@/components/ParticleBackground';
+
 const Index = () => {
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
     return () => clearTimeout(timer);
   }, []);
-  return <div className="relative h-screen w-screen overflow-hidden flex items-center bg-white">
-      {/* Particles background fills the entire screen */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
-        <ParticleBackground />
-      </div>
-      
-      {/* Header con logo de IE Universidad */}
-      <header className="absolute top-0 left-0 right-0 z-20 px-6 py-4">
-        <div className="flex justify-between items-center max-w-7xl mx-auto">
-          <a href="https://www.ie.edu" target="_blank" rel="noopener noreferrer">
-            <img src="/ie-logo-blue.svg" alt="IE University" className="h-8 w-auto" onError={e => {
-            e.currentTarget.src = '/ie-logo-fallback.png';
-          }} />
-          </a>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-800 hover:text-gray-600 transition-colors text-sm font-medium">Inicio</Link>
-            <Link to="/capitulo-1" className="text-gray-800 hover:text-gray-600 transition-colors text-sm font-medium">Capítulo 1</Link>
-            <Link to="/capitulo-2" className="text-gray-800 hover:text-gray-600 transition-colors text-sm font-medium">Capítulo 2</Link>
-            <Link to="/about" className="text-gray-800 hover:text-gray-600 transition-colors text-sm font-medium">Acerca de</Link>
-            <button className="text-gray-800 hover:text-gray-600 transition-colors">
-              <Search className="h-4 w-4" />
-            </button>
-          </nav>
+
+  return (
+    <div className="relative h-screen w-screen overflow-hidden flex flex-col lg:flex-row">
+      {/* Left side with particle background and content */}
+      <div className="relative w-full lg:w-1/2 h-full flex items-center">
+        {/* Particles background fills the left side */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+          <ParticleBackground />
         </div>
-      </header>
-
-      {/* Contenido principal - positioned in front of animation with 2/3 width */}
-      <div className="w-full z-10 px-[120px]">
-        <div className={`w-full max-w-7xl mx-auto transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="w-2/3 p-12">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Human Flourishing</h1>
-            
-            {/* Información del autor */}
-            <div className="mb-8 p-4 border-l-4 border-coral-red">
-              <h3 className="text-xl font-semibold mb-2">Autor</h3>
-              <p className="text-gray-700">Dra. María Rodríguez</p>
-              <p className="text-sm text-gray-500">Profesora de Innovación Educativa</p>
-              <p className="text-sm text-gray-500">Facultad de Ciencias Sociales y Comunicación</p>
-              <p className="text-sm text-gray-500 mt-2">Duración del curso: 8 semanas</p>
-            </div>
-            
-            <Button asChild className="bg-coral-red hover:bg-coral-red/90 text-white rounded-md px-8 py-3 text-base font-medium transition-all duration-200">
-              <Link to="/capitulo-1" className="flex items-center gap-2">
-                Comenzar curso <ChevronRight className="h-5 w-5" />
-              </Link>
-            </Button>
-
-            <div className="mt-14">
-              <div className="flex items-center space-x-6 opacity-80">
-                
-                
-                
+        
+        {/* Content positioned in front of animation */}
+        <div className="relative z-10 px-6 md:px-12 lg:px-16 w-full">
+          <div className={`w-full transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+            <div className="w-full max-w-xl">
+              <a href="https://www.ie.edu" target="_blank" rel="noopener noreferrer" className="block mb-8">
+                <img src="/ie-logo-blue.svg" alt="IE University" className="h-8 w-auto" onError={e => {
+                  e.currentTarget.src = '/ie-logo-fallback.png';
+                }} />
+              </a>
+              
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Human Flourishing</h1>
+              
+              {/* Información del autor */}
+              <div className="mb-8 p-4 border-l-4 border-coral-red">
+                <h3 className="text-xl font-semibold mb-2">Autor</h3>
+                <p className="text-gray-700">Dra. María Rodríguez</p>
+                <p className="text-sm text-gray-500">Profesora de Innovación Educativa</p>
+                <p className="text-sm text-gray-500">Facultad de Ciencias Sociales y Comunicación</p>
+                <p className="text-sm text-gray-500 mt-2">Duración del curso: 8 semanas</p>
               </div>
+              
+              <Button asChild className="bg-coral-red hover:bg-coral-red/90 text-white rounded-md px-8 py-3 text-base font-medium transition-all duration-200">
+                <Link to="/capitulo-1" className="flex items-center gap-2">
+                  Comenzar curso <ChevronRight className="h-5 w-5" />
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
+        
+        {/* Copyright - positioned at bottom of left side */}
+        <div className="absolute bottom-4 left-0 w-full text-center z-10">
+          <p className="text-xs text-gray-500 bg-white/50 py-1 inline-block px-4 rounded">
+            © {currentYear} IE University. Todos los derechos reservados.
+          </p>
+          {/* Comentario HTML para el widget de encuesta de retroalimentación */}
+          {/* SurveyAppProperties {"position":"right", "variant":"LateralAndPopUp"} SurveyAppProperties */}
+          {/* InjectionCode SurveyApp */}
+        </div>
       </div>
-
-      {/* Copyright y feedback survey widget (según requerimientos) */}
-      <div className="absolute bottom-4 left-0 w-full text-center z-10">
-        <p className="text-xs text-gray-500 bg-white/50 py-1 inline-block px-4 rounded">
-          © {currentYear} IE University. Todos los derechos reservados.
-        </p>
-        {/* Comentario HTML para el widget de encuesta de retroalimentación */}
-        {/* SurveyAppProperties {"position":"right", "variant":"LateralAndPopUp"} SurveyAppProperties */}
-        {/* InjectionCode SurveyApp */}
+      
+      {/* Right side with image */}
+      <div className="w-full lg:w-1/2 h-full">
+        <img 
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" 
+          alt="Educational landscape" 
+          className="w-full h-full object-cover"
+        />
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;

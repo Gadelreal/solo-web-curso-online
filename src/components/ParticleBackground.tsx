@@ -27,25 +27,26 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Pastel colors for particles
+    // Brighter, more vibrant colors for particles
     const particleColors = [
-      '#FEC6A1', // soft orange
-      '#FFD1DC', // soft pink
-      '#D3E4FD', // soft blue
-      '#F2FCE2', // soft green
-      '#E5DEFF', // soft purple
-      '#FEF7CD', // soft yellow
-      '#FDE1D3', // soft peach
+      '#FF6B6B', // bright coral red
+      '#FFA07A', // light salmon
+      '#8A2BE2', // blue violet
+      '#00BFFF', // deep sky blue
+      '#32CD32', // lime green
+      '#FF69B4', // hot pink
+      '#FFD700', // gold
+      '#9370DB', // medium purple
     ];
     
-    // Particle settings - increased particle count
-    const particleCount = 150; // Increased from 80
+    // Particle settings - increased count and connection distance
+    const particleCount = 200; // More particles
     const minSize = 2;
     const maxSize = 6;
-    const minSpeed = 0.1;  // Reduced for smoother movement
-    const maxSpeed = 0.4;  // Reduced for smoother movement
-    const connectDistance = 120; // Increased connection distance
-    const opacity = 0.65;
+    const minSpeed = 0.2;  // Increased for more movement
+    const maxSpeed = 0.6;  // Increased for more movement
+    const connectDistance = 150; // Increased connection distance
+    const opacity = 0.75; // Increased opacity
     
     // Create particles
     const particles: {
@@ -57,27 +58,34 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
       speedY: number;
       targetX?: number;
       targetY?: number;
-      followForce: number; // Added follow force property
+      followForce: number;
+      pulseDirection: number;
+      pulseSpeed: number;
+      originalSize: number;
     }[] = [];
     
     for (let i = 0; i < particleCount; i++) {
+      const size = minSize + Math.random() * (maxSize - minSize);
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: minSize + Math.random() * (maxSize - minSize),
+        size: size,
+        originalSize: size,
         color: particleColors[Math.floor(Math.random() * particleColors.length)],
         speedX: (Math.random() - 0.5) * (maxSpeed - minSpeed) + minSpeed,
         speedY: (Math.random() - 0.5) * (maxSpeed - minSpeed) + minSpeed,
-        followForce: Math.random() * 0.04 + 0.01 // Random follow force for varied movement
+        followForce: Math.random() * 0.08 + 0.02, // Increased follow force
+        pulseDirection: Math.random() > 0.5 ? 1 : -1,
+        pulseSpeed: Math.random() * 0.03 + 0.01
       });
     }
     
-    // Mouse tracking with improved smoothness
+    // Mouse/touch tracking with improved smoothness
     let mouse = { 
       x: canvas.width / 2, 
       y: canvas.height / 2,
       active: false,
-      radius: 150 // Interaction radius
+      radius: 180 // Increased interaction radius
     };
     
     const handleMouseMove = (event: MouseEvent) => {
@@ -86,16 +94,33 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
         x: event.clientX - rect.left,
         y: event.clientY - rect.top,
         active: true,
-        radius: 150
+        radius: 180
       };
     };
     
+    const handleTouchMove = (event: TouchEvent) => {
+      if (event.touches.length > 0) {
+        const rect = canvas.getBoundingClientRect();
+        mouse = {
+          x: event.touches[0].clientX - rect.left,
+          y: event.touches[0].clientY - rect.top,
+          active: true,
+          radius: 180
+        };
+      }
+    };
+    
     const handleMouseLeave = () => {
-      mouse.active = false;
+      // Don't immediately deactivate to allow for smoother transitions
+      setTimeout(() => {
+        mouse.active = false;
+      }, 500);
     };
     
     canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('touchmove', handleTouchMove);
     canvas.addEventListener('mouseleave', handleMouseLeave);
+    canvas.addEventListener('touchend', handleMouseLeave);
     
     // Animation function
     const animate = () => {
@@ -104,24 +129,35 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
       
       // Update and draw particles
       particles.forEach((particle, index) => {
+        // Apply pulsing effect
+        particle.size += particle.pulseDirection * particle.pulseSpeed;
+        
+        // Reverse pulse direction when reaching size thresholds
+        if (particle.size > particle.originalSize * 1.5 || particle.size < particle.originalSize * 0.7) {
+          particle.pulseDirection *= -1;
+        }
+        
         // Regular movement
         particle.x += particle.speedX;
         particle.y += particle.speedY;
         
-        // Mouse interaction - improved smoothness
+        // Mouse interaction - enhanced with swirl effect
         if (mouse.active) {
           const dx = mouse.x - particle.x;
           const dy = mouse.y - particle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
           if (distance < mouse.radius) {
-            // Enhanced cursor following with easing
+            // Enhanced cursor following with swirl effect
             const force = (mouse.radius - distance) / mouse.radius;
             const angle = Math.atan2(dy, dx);
-            const targetX = mouse.x + Math.cos(angle + Math.PI) * 30; // Offset to create swirl effect
-            const targetY = mouse.y + Math.sin(angle + Math.PI) * 30;
             
-            // Apply smooth easing based on individual particle's follow force
+            // Create a swirl motion around the cursor
+            const swirl = Math.PI / 2; // 90 degrees offset for swirl
+            const targetX = mouse.x + Math.cos(angle + swirl) * (40 + Math.random() * 20);
+            const targetY = mouse.y + Math.sin(angle + swirl) * (40 + Math.random() * 20);
+            
+            // Apply smooth easing with individual particle's follow force
             particle.x += (targetX - particle.x) * force * particle.followForce;
             particle.y += (targetY - particle.y) * force * particle.followForce;
           }
@@ -140,19 +176,29 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
         ctx.globalAlpha = opacity;
         ctx.fill();
         
-        // Connect nearby particles - improved connections
+        // Connect nearby particles with vibrant connections
         for (let j = index + 1; j < particles.length; j++) {
           const dx = particles[j].x - particle.x;
           const dy = particles[j].y - particle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
           if (distance < connectDistance) {
-            // Calculate opacity based on distance
+            // Calculate opacity and width based on distance
             const lineOpacity = opacity * (1 - distance / connectDistance);
+            const lineWidth = Math.max(0.5, 2 * (1 - distance / connectDistance));
+            
+            // Create a gradient between the two particle colors
+            const gradient = ctx.createLinearGradient(
+              particle.x, particle.y, 
+              particles[j].x, particles[j].y
+            );
+            gradient.addColorStop(0, particle.color);
+            gradient.addColorStop(1, particles[j].color);
+            
             ctx.beginPath();
-            ctx.strokeStyle = particle.color;
-            ctx.globalAlpha = lineOpacity * 0.7; // Slightly reduced opacity for cleaner look
-            ctx.lineWidth = 0.5;
+            ctx.strokeStyle = gradient;
+            ctx.globalAlpha = lineOpacity;
+            ctx.lineWidth = lineWidth;
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.stroke();
@@ -171,7 +217,9 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       canvas.removeEventListener('mousemove', handleMouseMove);
+      canvas.removeEventListener('touchmove', handleTouchMove);
       canvas.removeEventListener('mouseleave', handleMouseLeave);
+      canvas.removeEventListener('touchend', handleMouseLeave);
     };
   }, []);
   
