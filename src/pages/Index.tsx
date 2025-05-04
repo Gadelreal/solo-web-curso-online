@@ -1,23 +1,18 @@
-
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 import ParticleBackground from '@/components/ParticleBackground';
-
 const Index = () => {
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
     return () => clearTimeout(timer);
   }, []);
-
-  return (
-    <div className="relative h-screen w-screen overflow-hidden flex flex-col lg:flex-row">
+  return <div className="relative h-screen w-screen overflow-hidden flex flex-col lg:flex-row">
       {/* Left side with particle background and content */}
       <div className="relative w-full lg:w-1/2 h-full flex items-center">
         {/* Particles background fills the left side */}
@@ -31,8 +26,8 @@ const Index = () => {
             <div className="w-full max-w-xl">
               <a href="https://www.ie.edu" target="_blank" rel="noopener noreferrer" className="block mb-8">
                 <img src="/ie-logo-blue.svg" alt="IE University" className="h-8 w-auto" onError={e => {
-                  e.currentTarget.src = '/ie-logo-fallback.png';
-                }} />
+                e.currentTarget.src = '/ie-logo-fallback.png';
+              }} />
               </a>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Human Flourishing</h1>
@@ -56,7 +51,7 @@ const Index = () => {
         </div>
         
         {/* Copyright - positioned at bottom of left side */}
-        <div className="absolute bottom-4 left-0 w-full text-center z-10">
+        <div className="absolute bottom-4 left-0 w-full text-left z-10 px-[60px]">
           <p className="text-xs text-gray-500 bg-white/50 py-1 inline-block px-4 rounded">
             © {currentYear} IE University. Todos los derechos reservados.
           </p>
@@ -68,14 +63,8 @@ const Index = () => {
       
       {/* Right side with image */}
       <div className="w-full lg:w-1/2 h-full">
-        <img 
-          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" 
-          alt="Educational landscape" 
-          className="w-full h-full object-cover"
-        />
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb" alt="Educational landscape" className="w-full h-full object-cover" />
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
