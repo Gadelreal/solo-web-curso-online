@@ -27,26 +27,26 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
     
-    // Brighter, more vibrant colors for particles
+    // Soft, pastel colors for particles
     const particleColors = [
-      '#FF6B6B', // bright coral red
-      '#FFA07A', // light salmon
-      '#8A2BE2', // blue violet
-      '#00BFFF', // deep sky blue
-      '#32CD32', // lime green
-      '#FF69B4', // hot pink
-      '#FFD700', // gold
-      '#9370DB', // medium purple
+      '#F2FCE2', // soft green
+      '#FEF7CD', // soft yellow
+      '#FEC6A1', // soft orange
+      '#E5DEFF', // soft purple
+      '#FFDEE2', // soft pink
+      '#FDE1D3', // soft peach
+      '#D3E4FD', // soft blue
+      '#F1F0FB', // soft gray
     ];
     
-    // Particle settings - increased count and connection distance
-    const particleCount = 200; // More particles
+    // Particle settings - adjusted for softer appearance
+    const particleCount = 150; // Reduced from 200 for a softer look
     const minSize = 2;
-    const maxSize = 6;
-    const minSpeed = 0.2;  // Increased for more movement
-    const maxSpeed = 0.6;  // Increased for more movement
-    const connectDistance = 150; // Increased connection distance
-    const opacity = 0.75; // Increased opacity
+    const maxSize = 4; // Reduced for subtler particles
+    const minSpeed = 0.1;  // Reduced for gentler movement
+    const maxSpeed = 0.3;  // Reduced for gentler movement
+    const connectDistance = 120; // Slightly reduced
+    const opacity = 0.5; // Reduced opacity for softer look
     
     // Create particles
     const particles: {
@@ -74,9 +74,9 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
         color: particleColors[Math.floor(Math.random() * particleColors.length)],
         speedX: (Math.random() - 0.5) * (maxSpeed - minSpeed) + minSpeed,
         speedY: (Math.random() - 0.5) * (maxSpeed - minSpeed) + minSpeed,
-        followForce: Math.random() * 0.08 + 0.02, // Increased follow force
+        followForce: Math.random() * 0.05 + 0.01, // Reduced follow force for gentler interaction
         pulseDirection: Math.random() > 0.5 ? 1 : -1,
-        pulseSpeed: Math.random() * 0.03 + 0.01
+        pulseSpeed: Math.random() * 0.02 + 0.005 // Slower pulsing
       });
     }
     
@@ -85,7 +85,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
       x: canvas.width / 2, 
       y: canvas.height / 2,
       active: false,
-      radius: 180 // Increased interaction radius
+      radius: 150 // Reduced interaction radius
     };
     
     const handleMouseMove = (event: MouseEvent) => {
@@ -94,7 +94,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
         x: event.clientX - rect.left,
         y: event.clientY - rect.top,
         active: true,
-        radius: 180
+        radius: 150
       };
     };
     
@@ -105,7 +105,7 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
           x: event.touches[0].clientX - rect.left,
           y: event.touches[0].clientY - rect.top,
           active: true,
-          radius: 180
+          radius: 150
         };
       }
     };
@@ -124,40 +124,40 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
     
     // Animation function
     const animate = () => {
-      // Clear canvas
+      // Clear canvas with a very subtle background tint
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // Update and draw particles
       particles.forEach((particle, index) => {
-        // Apply pulsing effect
+        // Apply gentler pulsing effect
         particle.size += particle.pulseDirection * particle.pulseSpeed;
         
         // Reverse pulse direction when reaching size thresholds
-        if (particle.size > particle.originalSize * 1.5 || particle.size < particle.originalSize * 0.7) {
+        if (particle.size > particle.originalSize * 1.3 || particle.size < particle.originalSize * 0.8) {
           particle.pulseDirection *= -1;
         }
         
-        // Regular movement
+        // Slower movement
         particle.x += particle.speedX;
         particle.y += particle.speedY;
         
-        // Mouse interaction - enhanced with swirl effect
+        // Mouse interaction - gentler with swirl effect
         if (mouse.active) {
           const dx = mouse.x - particle.x;
           const dy = mouse.y - particle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
           if (distance < mouse.radius) {
-            // Enhanced cursor following with swirl effect
-            const force = (mouse.radius - distance) / mouse.radius;
+            // Gentler cursor following with softer swirl effect
+            const force = (mouse.radius - distance) / mouse.radius * 0.6; // Reduced force
             const angle = Math.atan2(dy, dx);
             
-            // Create a swirl motion around the cursor
-            const swirl = Math.PI / 2; // 90 degrees offset for swirl
-            const targetX = mouse.x + Math.cos(angle + swirl) * (40 + Math.random() * 20);
-            const targetY = mouse.y + Math.sin(angle + swirl) * (40 + Math.random() * 20);
+            // Create a gentler swirl motion around the cursor
+            const swirl = Math.PI / 2.5; // Adjusted for softer swirl
+            const targetX = mouse.x + Math.cos(angle + swirl) * (30 + Math.random() * 10);
+            const targetY = mouse.y + Math.sin(angle + swirl) * (30 + Math.random() * 10);
             
-            // Apply smooth easing with individual particle's follow force
+            // Apply smoother, gentler easing
             particle.x += (targetX - particle.x) * force * particle.followForce;
             particle.y += (targetY - particle.y) * force * particle.followForce;
           }
@@ -169,23 +169,23 @@ const ParticleBackground: React.FC<ParticleBackgroundProps> = ({ className }) =>
         if (particle.y < 0) particle.y = canvas.height;
         if (particle.y > canvas.height) particle.y = 0;
         
-        // Draw particle
+        // Draw particle with softer appearance
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fillStyle = particle.color;
         ctx.globalAlpha = opacity;
         ctx.fill();
         
-        // Connect nearby particles with vibrant connections
+        // Connect nearby particles with softer connections
         for (let j = index + 1; j < particles.length; j++) {
           const dx = particles[j].x - particle.x;
           const dy = particles[j].y - particle.y;
           const distance = Math.sqrt(dx * dx + dy * dy);
           
           if (distance < connectDistance) {
-            // Calculate opacity and width based on distance
-            const lineOpacity = opacity * (1 - distance / connectDistance);
-            const lineWidth = Math.max(0.5, 2 * (1 - distance / connectDistance));
+            // Calculate opacity and width based on distance - softer, more subtle
+            const lineOpacity = opacity * 0.6 * (1 - distance / connectDistance);
+            const lineWidth = Math.max(0.1, 1 * (1 - distance / connectDistance));
             
             // Create a gradient between the two particle colors
             const gradient = ctx.createLinearGradient(
