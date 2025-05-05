@@ -43,8 +43,8 @@ const Index = () => {
               
               {/* Author information - appears third */}
               <div className={`mb-8 p-4 border-l-4 border-coral-red transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                
-                <p className="text-gray-700">Author: Cristina Vicedo</p>
+                <h3 className="text-xl font-semibold mb-2">Autor</h3>
+                <p className="text-gray-700">Cristina Vicedo</p>
                 <p className="text-gray-700 text-base">Code: 1234567</p>
                 <p className="text-gray-700 text-base">Time estimate: 60-90 minutes</p>
                 
