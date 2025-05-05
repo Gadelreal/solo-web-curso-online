@@ -19,13 +19,13 @@ const Index = () => {
   }, []);
   
   return <div className="relative min-h-screen w-full overflow-hidden flex flex-col">
-      {/* Logo positioned in the absolute top-left */}
-      <div className="absolute top-4 left-4 md:top-8 md:left-8 z-20">
+      {/* Logo positioned to align with content */}
+      <div className="absolute top-8 left-6 md:top-12 md:left-12 lg:left-[120px] z-20">
         <a href="https://www.ie.edu" target="_blank" rel="noopener noreferrer">
           <img 
             src="/IE University logo.svg" 
             alt="IE University" 
-            className="h-10 md:h-12 w-auto" 
+            className="h-16 md:h-20 w-auto" 
             onError={e => {
               e.currentTarget.src = '/ie-logo-fallback.png';
             }} 
@@ -44,7 +44,7 @@ const Index = () => {
         <div className="relative z-10 px-6 md:px-12 w-full lg:px-[120px]">
           <div className={`w-full transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             <div className="w-full max-w-xl mx-auto lg:mx-0">
-              <div className="mt-16 md:mt-20 lg:mt-0"></div> {/* Spacer to compensate for the absolute positioned logo */}
+              <div className="mt-24 md:mt-28 lg:mt-24"></div> {/* Increased spacer for the larger logo */}
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Human Flourishing</h1>
               
