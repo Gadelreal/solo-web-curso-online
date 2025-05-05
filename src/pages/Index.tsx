@@ -12,6 +12,7 @@ const Index = () => {
   const isMobile = useIsMobile();
   
   useEffect(() => {
+    // Set elements to visible with a slight delay for a smoother entrance
     const timer = setTimeout(() => {
       setIsVisible(true);
     }, 300);
@@ -20,7 +21,7 @@ const Index = () => {
   
   return <div className="relative min-h-screen w-full overflow-hidden flex flex-col">
       {/* Logo positioned to align with content */}
-      <div className="absolute top-8 left-6 md:top-12 md:left-12 lg:left-[120px] z-20">
+      <div className={`absolute top-8 left-6 md:top-12 md:left-12 lg:left-[120px] z-20 transition-all duration-1000 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-8'}`}>
         <a href="https://www.ie.edu" target="_blank" rel="noopener noreferrer">
           <img 
             src="/IE University logo.svg" 
@@ -42,14 +43,14 @@ const Index = () => {
         
         {/* Content positioned in front of animation */}
         <div className="relative z-10 px-6 md:px-12 w-full lg:px-[120px]">
-          <div className={`w-full transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`w-full transition-all duration-1000 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="w-full max-w-xl mx-auto lg:mx-0">
               <div className="mt-24 md:mt-28 lg:mt-24"></div> {/* Increased spacer for the larger logo */}
               
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Human Flourishing</h1>
+              <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>Human Flourishing</h1>
               
               {/* Información del autor */}
-              <div className="mb-8 p-4 border-l-4 border-coral-red">
+              <div className={`mb-8 p-4 border-l-4 border-coral-red transition-all duration-1000 delay-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
                 <h3 className="text-xl font-semibold mb-2">Autor</h3>
                 <p className="text-gray-700">Dra. María Rodríguez</p>
                 <p className="text-sm text-gray-500">Profesora de Innovación Educativa</p>
@@ -57,7 +58,10 @@ const Index = () => {
                 <p className="text-sm text-gray-500 mt-2">Duración del curso: 8 semanas</p>
               </div>
               
-              <Button asChild className="bg-coral-red hover:bg-coral-red/90 text-white rounded-md px-8 py-3 text-base font-medium transition-all duration-200">
+              <Button 
+                asChild 
+                className={`bg-coral-red hover:bg-coral-red/90 text-white rounded-md px-8 py-3 text-base font-medium transition-all duration-1000 delay-900 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+              >
                 <Link to="/capitulo-1" className="flex items-center gap-2">
                   Comenzar curso <ChevronRight className="h-5 w-5" />
                 </Link>
@@ -67,7 +71,7 @@ const Index = () => {
         </div>
         
         {/* Copyright - mobile positioning adjusted */}
-        <div className={`${isMobile ? 'relative mt-8' : 'absolute bottom-4 left-0'} w-full text-left z-10 px-6 md:px-12 lg:px-[60px]`}>
+        <div className={`${isMobile ? 'relative mt-8' : 'absolute bottom-4 left-0'} w-full text-left z-10 px-6 md:px-12 lg:px-[60px] transition-all duration-1000 delay-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <p className="text-xs text-gray-500 bg-white/50 py-1 inline-block rounded px-[60px]">
             © {currentYear} IE University. Todos los derechos reservados.
           </p>
@@ -78,8 +82,12 @@ const Index = () => {
       </div>
       
       {/* Image section - stacks below content on mobile */}
-      <div className={`${isMobile ? 'h-[60vh]' : 'h-screen lg:absolute lg:right-0 lg:top-0 lg:w-1/2'} w-full`}>
-        <img src="/lovable-uploads/7e6cb268-92ec-43c6-a62b-fd6e4f7bf969.png" alt="Person with sunglasses in bright sunlight" className="w-full h-full object-cover" />
+      <div className={`${isMobile ? 'h-[60vh]' : 'h-screen lg:absolute lg:right-0 lg:top-0 lg:w-1/2'} w-full transition-all duration-1500 ease-out ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <img 
+          src="/lovable-uploads/7e6cb268-92ec-43c6-a62b-fd6e4f7bf969.png" 
+          alt="Person with sunglasses in bright sunlight" 
+          className={`w-full h-full object-cover ${isVisible ? 'scale-100 filter-none' : 'scale-105 filter blur-sm'} transition-all duration-2000 ease-out`} 
+        />
       </div>
     </div>;
 };
