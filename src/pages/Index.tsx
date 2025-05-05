@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ChevronRight } from 'lucide-react';
 import ParticleBackground from '@/components/ParticleBackground';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Index = () => {
   const currentYear = new Date().getFullYear();
   const [isVisible, setIsVisible] = useState(false);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -16,10 +18,11 @@ const Index = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  return <div className="relative h-screen w-screen overflow-hidden flex flex-col lg:flex-row">
-      {/* Left side with particle background and content */}
-      <div className="relative w-full lg:w-1/2 h-full flex items-center">
-        {/* Particles background fills the left side */}
+  return (
+    <div className="relative min-h-screen w-full overflow-hidden flex flex-col">
+      {/* Content section - full height on mobile, half width on desktop */}
+      <div className={`relative ${isMobile ? 'h-auto py-8' : 'h-screen lg:w-1/2'} w-full flex flex-col justify-center`}>
+        {/* Particles background fills this section */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
           <ParticleBackground />
         </div>
@@ -27,11 +30,16 @@ const Index = () => {
         {/* Content positioned in front of animation */}
         <div className="relative z-10 px-6 md:px-12 lg:px-16 w-full">
           <div className={`w-full transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            <div className="w-full max-w-xl">
+            <div className="w-full max-w-xl mx-auto lg:mx-0">
               <a href="https://www.ie.edu" target="_blank" rel="noopener noreferrer" className="block mb-8">
-                <img src="/ie-logo-blue.svg" alt="IE University" className="h-8 w-auto" onError={e => {
-                e.currentTarget.src = '/ie-logo-fallback.png';
-              }} />
+                <img 
+                  src="/ie-logo-blue.svg" 
+                  alt="IE University" 
+                  className="h-8 w-auto" 
+                  onError={e => {
+                    e.currentTarget.src = '/ie-logo-fallback.png';
+                  }} 
+                />
               </a>
               
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 leading-tight">Human Flourishing</h1>
@@ -54,8 +62,8 @@ const Index = () => {
           </div>
         </div>
         
-        {/* Copyright - positioned at bottom of left side */}
-        <div className="absolute bottom-4 left-0 w-full text-left z-10 px-[60px]">
+        {/* Copyright - mobile positioning adjusted */}
+        <div className={`${isMobile ? 'relative mt-8' : 'absolute bottom-4 left-0'} w-full text-left z-10 px-6 md:px-12 lg:px-[60px]`}>
           <p className="text-xs text-gray-500 bg-white/50 py-1 inline-block px-4 rounded">
             © {currentYear} IE University. Todos los derechos reservados.
           </p>
@@ -65,15 +73,16 @@ const Index = () => {
         </div>
       </div>
       
-      {/* Right side with the uploaded image */}
-      <div className="w-full lg:w-1/2 h-full">
+      {/* Image section - stacks below content on mobile */}
+      <div className={`${isMobile ? 'h-[60vh]' : 'h-screen lg:absolute lg:right-0 lg:top-0 lg:w-1/2'} w-full`}>
         <img 
           src="/lovable-uploads/7e6cb268-92ec-43c6-a62b-fd6e4f7bf969.png" 
           alt="Person with sunglasses in bright sunlight" 
           className="w-full h-full object-cover" 
         />
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default Index;
