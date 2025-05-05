@@ -54,7 +54,7 @@ const Index = () => {
         
         {/* Copyright - mobile positioning adjusted */}
         <div className={`${isMobile ? 'relative mt-8' : 'absolute bottom-4 left-0'} w-full text-left z-10 px-6 md:px-12 lg:px-[60px]`}>
-          <p className="text-xs text-gray-500 bg-white/50 py-1 inline-block px-4 rounded">
+          <p className="text-xs text-gray-500 bg-white/50 py-1 inline-block rounded px-[60px]">
             © {currentYear} IE University. Todos los derechos reservados.
           </p>
           {/* Comentario HTML para el widget de encuesta de retroalimentación */}
